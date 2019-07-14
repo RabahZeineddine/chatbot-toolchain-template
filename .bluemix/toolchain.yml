@@ -29,7 +29,7 @@ template:
           '[master]('+ $env.repository + '/tree/master)'
 toolchain:
   name: 'chatbot-toolchain-{{timestamp}}'
-  region: 'us-south'
+  region_id: 'ibm:yp:us-south'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
