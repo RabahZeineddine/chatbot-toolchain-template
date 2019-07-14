@@ -1,12 +1,13 @@
-# Develop a Cloud Foundry app
+# Develop a Chatbot Cloud Foundry app
 
 ### Continuously deliver a Cloud Foundry app with IBM hosted repos and issue tracking
+### Continuously deliver a front-end and back-end Cloud Foundry apps with IBM hosted repos
 
-This Hello World application uses Node.js and includes a DevOps toolchain that is preconfigured for continuous delivery, source control, issue tracking, and online editing.
+This Chatbot front-end application uses React.js and includes a DevOps toolchain that is preconfigured for continuous delivery, source control, issue tracking, and online editing.
 
 ### To get started, click **Create toolchain**.
 
-[![Deploy To IBM Cloud](https://cloud.ibm.com/devops/graphics/create_toolchain_button.png)](https://cloud.ibm.com/devops/setup/deploy/?repository=https%3A//github.com/open-toolchain/simple-toolchain-hosted)
+[![Deploy To IBM Cloud](https://cloud.ibm.com/devops/graphics/create_toolchain_button.png)](https://cloud.ibm.com/devops/setup/deploy/?repository=https%3A//github.com/RabahZeineddine/chatbot-toolchain-template.git)
 
 ---
 ### Learn more
