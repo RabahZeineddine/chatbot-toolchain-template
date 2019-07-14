@@ -70,15 +70,15 @@ services:
         content:
           $text: pipeline.yml
         env:
-          # CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
-          # PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
-          # PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
-          # PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-          # API_KEY: '{{form.pipeline.parameters.api-key}}'
-        # execute: true
+          CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
+        execute: true
 form:
-  # pipeline:
-  #   parameters:
-  #     prod-app-name: '{{services.sample-repo.parameters.repo_name}}'
-  #   schema:
-  #     $ref: deploy.json
+  pipeline:
+    parameters:
+      prod-app-name: '{{services.front-end-repo.parameters.repo_name}}'
+    schema:
+      $ref: deploy.json
