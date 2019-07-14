@@ -96,8 +96,13 @@ services:
         #   API_KEY: '{{form.pipeline.parameters.api-key}}'
         # execute: true
 form:
-  pipeline:
+  front-end-build:
     parameters:
       prod-app-name: '{{services.front-end-repo.parameters.repo_name}}'
+    schema:
+      $ref: deploy.json
+  back-end-build:
+    parameters:
+      prod-app-name: '{{services.back-end-repo.parameters.repo_name}}'
     schema:
       $ref: deploy.json
