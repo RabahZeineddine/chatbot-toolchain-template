@@ -7,7 +7,7 @@ This Chatbot front-end application uses React.js and includes a DevOps toolchain
 
 ### To get started, click **Create toolchain**.
 
-[![Deploy To IBM Cloud](https://cloud.ibm.com/devops/graphics/create_toolchain_button.png)](https://cloud.ibm.com/devops/setup/deploy/?repository=https%3A//github.com/RabahZeineddine/chatbot-toolchain-template.git)
+[![Deploy To IBM Cloud](https://cloud.ibm.com/devops/graphics/create_toolchain_button.png)](https://cloud.ibm.com/devops/setup/deploy?repository=https%3A//github.com/RabahZeineddine/chatbot-toolchain-template.git&env_id=ibm:yp:us-south)
 
 ---
 ### Learn more
