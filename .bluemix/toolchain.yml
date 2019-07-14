@@ -41,8 +41,8 @@ services:
           $env.app_repo : 'https://github.com/RabahZeineddine/chatbot.git'
       source_repo_url: >
         $env.type === 'fork' || $env.type === 'clone' ? 
-          $env.app_repo : 'https://github.com/open-toolchain/node-hello-world'
-      type: $env.type || 'existing'
+          $env.app_repo : 'https://github.com/RabahZeineddine/chatbot.git'
+      type: $env.type || 'link'
       has_issues: false
       enable_traceability: true
   # sample-build:
