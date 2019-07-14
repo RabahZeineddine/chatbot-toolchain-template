@@ -78,8 +78,8 @@ services:
   #         API_KEY: '{{form.pipeline.parameters.api-key}}'
   #       execute: true
 form:
-  pipeline:
-    parameters:
-      prod-app-name: '{{services.sample-repo.parameters.repo_name}}'
-    schema:
-      $ref: deploy.json
+  # pipeline:
+  #   parameters:
+  #     prod-app-name: '{{services.sample-repo.parameters.repo_name}}'
+  #   schema:
+  #     $ref: deploy.json
