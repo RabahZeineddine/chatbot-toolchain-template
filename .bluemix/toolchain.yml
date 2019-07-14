@@ -16,6 +16,8 @@ template:
   required:
     - front-end-repo
     - back-end-repo
+    - front-end-build
+    - back-end-build
     # - sample-build
   info:  
     # compute the git url and branch values dynamically so that they remain correct when repo is forked etc. 
