@@ -14,8 +14,8 @@ template:
   # header: '![](toolchain.svg?localize)'
   icon: icon.svg
   required:
+    - front-end-repo
     # - sample-build
-    - sample-repo
   info:  
     # compute the git url and branch values dynamically so that they remain correct when repo is forked etc. 
     # note: `repository` url param must always be provided while the `branch` url param is optional
@@ -27,24 +27,23 @@ template:
           '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')' :
           '[master]('+ $env.repository + '/tree/master)'
 toolchain:
-  name: 'simple-toolchain-{{timestamp}}'
+  name: 'chatbot-toolchain-{{timestamp}}'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
 services:
-  sample-repo:
-    service_id: >
-      $env.source_provider ? $env.source_provider : 'hostedgit'
+  front-end-repo:
+    service_id: 'githubpublic'
     parameters:
       repo_name: '{{toolchain.name}}'
       repo_url: >
         $env.type === 'link' ? 
-          $env.app_repo : 'https://github.com/open-toolchain/node-hello-world'
+          $env.app_repo : 'https://github.com/RabahZeineddine/chatbot.git'
       source_repo_url: >
         $env.type === 'fork' || $env.type === 'clone' ? 
           $env.app_repo : 'https://github.com/open-toolchain/node-hello-world'
-      type: $env.type || 'clone'
-      has_issues: true
+      type: $env.type || 'existing'
+      has_issues: false
       enable_traceability: true
   # sample-build:
   #   service_id: pipeline
