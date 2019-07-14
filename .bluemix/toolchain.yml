@@ -76,6 +76,23 @@ services:
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
         execute: true
+  back-end-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - front-end-repo
+      name: '{{services.back-end-repo.parameters.repo_name}}-pipeline'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: pipeline.yml
+        env:
+          CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
+        execute: true
 form:
   pipeline:
     parameters:
