@@ -15,6 +15,7 @@ template:
   icon: icon.svg
   required:
     - front-end-repo
+    - back-end-repo
     # - sample-build
   info:  
     # compute the git url and branch values dynamically so that they remain correct when repo is forked etc. 
@@ -35,13 +36,26 @@ services:
   front-end-repo:
     service_id: 'githubpublic'
     parameters:
-      repo_name: '{{toolchain.name}}'
+      repo_name: 'frontend-{{timestamp}}'
       repo_url: >
         $env.type === 'link' ? 
           $env.app_repo : 'https://github.com/RabahZeineddine/chatbot.git'
       source_repo_url: >
         $env.type === 'fork' || $env.type === 'clone' ? 
           $env.app_repo : 'https://github.com/RabahZeineddine/chatbot.git'
+      type: $env.type || 'link'
+      has_issues: false
+      enable_traceability: true
+  back-end-repo:
+    service_id: 'githubpublic'
+    parameters:
+      repo_name: 'backend-{{timestamp}}'
+      repo_url: >
+        $env.type === 'link' ? 
+          $env.app_repo : 'https://github.com/RabahZeineddine/chatbot-backend.git'
+      source_repo_url: >
+        $env.type === 'fork' || $env.type === 'clone' ? 
+          $env.app_repo : 'https://github.com/RabahZeineddine/chatbot-backend.git'
       type: $env.type || 'link'
       has_issues: false
       enable_traceability: true
