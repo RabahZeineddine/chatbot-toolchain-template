@@ -186,11 +186,11 @@
                     }
                 },
                 {
-                    "type": "string",
+                    "type": "text",
                     "key": "assistant-url"
                 },
                 {
-                    "type": "string",
+                    "type": "text",
                     "key": "assistant-apikey"
                 }
             ]
@@ -216,11 +216,11 @@
                     }
                 },
                 {
-                    "type": "string",
+                    "type": "text",
                     "key": "assistant-id"
                 },
                 {
-                    "type": "string",
+                    "type": "text",
                     "key": "assistant-version"
                 }
             ]
