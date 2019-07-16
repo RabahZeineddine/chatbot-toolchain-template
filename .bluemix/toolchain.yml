@@ -70,8 +70,9 @@ services:
       ui-pipeline: true
       configuration:
         content:
-          $text: pipeline.yml
+          $text: front-pipeline.yml
         env:
+          GIT_REPO: front-end-repo
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
@@ -85,24 +86,20 @@ services:
         - back-end-repo
       name: '{{services.back-end-repo.parameters.repo_name}}-pipeline'
       ui-pipeline: true
-      # configuration:
-        # content:
-        #   $text: pipeline.yml
-        # env:
+      configuration:
+        content:
+          $text: pipeline.yml
+        env:
+          GIT_REPO: back-end-repo
         #   CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
         #   PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
         #   PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
         #   PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
         #   API_KEY: '{{form.pipeline.parameters.api-key}}'
-        # execute: true
+        execute: true
 form:
-  front-end-build:
+  pipeline:
     parameters:
       prod-app-name: '{{services.front-end-repo.parameters.repo_name}}'
-    schema:
-      $ref: deploy.json
-  back-end-build:
-    parameters:
-      prod-app-name: '{{services.back-end-repo.parameters.repo_name}}'
     schema:
       $ref: deploy.json
