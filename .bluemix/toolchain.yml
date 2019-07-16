@@ -91,15 +91,17 @@ services:
           $text: back-pipeline.yml
         env:
           GIT_REPO: back-end-repo
-        #   CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
-        #   PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
-        #   PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
-        #   PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-        #   API_KEY: '{{form.pipeline.parameters.api-key}}'
+          CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}-backend'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
+          ASSISTANT_VERSION: '{{form.pipeline.parameters.assistant-version}}'
+          ASSISTANT_APIKEY: '{{form.pipeline.parameters.assistant-apikey}}'
+          ASSISTANT_URL: '{{form.pipeline.parameters.assistant-url}}'
+          ASSISTANT_ID: '{{form.pipeline.parameters.assistant-id}}'
         execute: true
 form:
   pipeline:
-    parameters:
-      prod-app-name: '{{services.front-end-repo.parameters.repo_name}}'
     schema:
       $ref: deploy.json

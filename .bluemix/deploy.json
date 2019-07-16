@@ -21,7 +21,9 @@
             "type": "string",
             "validator": {
                 "v-type": "cf-region",
-                "params": ["api-key"]
+                "params": [
+                    "api-key"
+                ]
             }
         },
         "prod-organization": {
@@ -31,7 +33,9 @@
             "type": "string",
             "validator": {
                 "v-type": "cf-org",
-                "params": ["prod-region"]
+                "params": [
+                    "prod-region"
+                ]
             }
         },
         "prod-space": {
@@ -41,7 +45,9 @@
             "type": "string",
             "validator": {
                 "v-type": "cf-space",
-                "params": ["prod-organization"]
+                "params": [
+                    "prod-organization"
+                ]
             }
         },
         "api-key": {
@@ -59,6 +65,30 @@
             },
             "type": "string",
             "pattern": "\\S"
+        },
+        "assistant-version": {
+            "description": {
+                "$ref": "#/messages/deploy.assistantVersion"
+            },
+            "type": "string"
+        },
+        "assistant-apikey": {
+            "description": {
+                "$ref": "#/messages/deploy.assistantApikey"
+            },
+            "type": "string"
+        },
+        "assistant-url": {
+            "description": {
+                "$ref": "#/messages/deploy.assistantURL"
+            },
+            "type": "string"
+        },
+        "assistant-id": {
+            "description": {
+                "$ref": "#/messages/deploy.assistantID"
+            },
+            "type": "string"
         }
     },
     "required": [
@@ -66,9 +96,14 @@
         "prod-organization",
         "prod-space",
         "prod-app-name",
-        "api-key"
+        "api-key",
+        "assistant-version",
+        "assistant-apikey",
+        "assistant-url",
+        "assistant-id"
     ],
-    "form": [{
+    "form": [
+        {
             "type": "validator",
             "url": "/devops/setup/bm-helper/validator-v1.html"
         },
@@ -96,7 +131,8 @@
                 "33%",
                 "33%"
             ],
-            "items": [{
+            "items": [
+                {
                     "type": "label",
                     "title": {
                         "$ref": "#/messages/region"
@@ -126,6 +162,66 @@
                     "type": "select",
                     "key": "prod-space",
                     "readonly": false
+                }
+            ]
+        },
+        {
+            "type": "table",
+            "columnCount": 2,
+            "widths": [
+                "50%",
+                "50%"
+            ],
+            "items": [
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/assistantURL"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/assistantApikey"
+                    }
+                },
+                {
+                    "type": "string",
+                    "key": "assistant-url"
+                },
+                {
+                    "type": "string",
+                    "key": "assistant-apikey"
+                }
+            ]
+        },
+        {
+            "type": "table",
+            "columnCount": 2,
+            "widths": [
+                "50%",
+                "50%"
+            ],
+            "items": [
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/assistantID"
+                    }
+                },
+                {
+                    "type": "label",
+                    "title": {
+                        "$ref": "#/messages/assistantVersion"
+                    }
+                },
+                {
+                    "type": "string",
+                    "key": "assistant-id"
+                },
+                {
+                    "type": "string",
+                    "key": "assistant-version"
                 }
             ]
         }
