@@ -88,7 +88,7 @@ services:
       ui-pipeline: true
       configuration:
         content:
-          $text: pipeline.yml
+          $text: back-pipeline.yml
         env:
           GIT_REPO: back-end-repo
         #   CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
