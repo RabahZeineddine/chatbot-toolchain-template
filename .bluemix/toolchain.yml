@@ -103,5 +103,7 @@ services:
         execute: true
 form:
   pipeline:
+    parameters:
+      assistant-url: 'https://gateway.watsonplatform.net/assistant/api'
     schema:
       $ref: deploy.json
