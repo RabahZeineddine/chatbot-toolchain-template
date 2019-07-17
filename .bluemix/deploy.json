@@ -176,22 +176,22 @@
                 {
                     "type": "label",
                     "title": {
-                        "$ref": "#/messages/assistantURL"
+                        "$ref": "#/messages/assistantApikey"
                     }
                 },
                 {
                     "type": "label",
                     "title": {
-                        "$ref": "#/messages/assistantApikey"
+                        "$ref": "#/messages/assistantID"
                     }
                 },
                 {
                     "type": "text",
-                    "key": "assistant-url"
+                    "key": "assistant-apikey"
                 },
                 {
                     "type": "text",
-                    "key": "assistant-apikey"
+                    "key": "assistant-id"
                 }
             ]
         },
@@ -206,7 +206,7 @@
                 {
                     "type": "label",
                     "title": {
-                        "$ref": "#/messages/assistantID"
+                        "$ref": "#/messages/assistantURL"
                     }
                 },
                 {
@@ -217,7 +217,7 @@
                 },
                 {
                     "type": "text",
-                    "key": "assistant-id"
+                    "key": "assistant-url"
                 },
                 {
                     "type": "text",
