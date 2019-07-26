@@ -78,7 +78,7 @@ services:
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
-        execute: false
+        execute: true
   back-end-build:
     service_id: pipeline
     parameters:
@@ -100,7 +100,7 @@ services:
           ASSISTANT_APIKEY: '{{form.pipeline.parameters.assistant-apikey}}'
           ASSISTANT_URL: '{{form.pipeline.parameters.assistant-url}}'
           ASSISTANT_ID: '{{form.pipeline.parameters.assistant-id}}'
-        execute: false
+        execute: true
 form:
   pipeline:
     parameters:
