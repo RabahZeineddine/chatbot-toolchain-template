@@ -24,6 +24,12 @@ stages:
       #export PATH=/opt/IBM/node-v4.4.5/bin:$PATH
       # To use Node.js 6.7.0, uncomment the following line:
       export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
+      #!/bin/bash
+      rm -rf .env
+      file="assistantVersion=${ASSISTANT_VERSION}\nassistantApikey=${ASSISTANT_APIKEY}\nassistantURL=${ASSISTANT_URL}\nassistantID=${ASSISTANT_ID}"
+      echo -e $file >> .env
+      echo "Creating .env file with:"
+      echo -e $file
       npm install
       npm run build
 - name: Deploy Back end Stage
@@ -34,12 +40,6 @@ stages:
   triggers:
   - type: stage
   properties:
-  # - name: CF_APP_NAME
-  #   value: undefined
-  #   type: text
-  # - name: APP_URL
-  #   value: undefined
-  #   type: text
   jobs:
   - name: Backend Deploy
     type: deployer

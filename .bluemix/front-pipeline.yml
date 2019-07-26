@@ -24,6 +24,10 @@ stages:
       #export PATH=/opt/IBM/node-v4.4.5/bin:$PATH
       # To use Node.js 6.7.0, uncomment the following line:
       export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
+      file="export default {API:'https://${CF_APP_NAME}-backend.mybluemix.net'}"
+      echo $file > src/config/env/production.js
+      echo "Creating env file with:"
+      echo $file
       npm install
       npm run build
 - name: Deploy Front end Stage
@@ -34,12 +38,6 @@ stages:
   triggers:
   - type: stage
   properties:
-  # - name: CF_APP_NAME
-  #   value: undefined
-  #   type: text
-  # - name: APP_URL
-  #   value: undefined
-  #   type: text
   jobs:
   - name: Frontend Deploy
     type: deployer
