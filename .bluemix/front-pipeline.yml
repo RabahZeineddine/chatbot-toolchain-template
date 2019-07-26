@@ -34,7 +34,7 @@ stages:
   inputs:
   - type: job
     stage: Build Front End Stage
-    job: Deploy
+    job: Build Front End Stage
   triggers:
   - type: stage
   properties:
