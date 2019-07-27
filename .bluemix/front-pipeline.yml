@@ -34,7 +34,6 @@ stages:
       echo "Creating env file with:"
       echo $file
       npm install
-      npm run build
 - name: Deploy Front end Stage
   inputs:
   - type: job
