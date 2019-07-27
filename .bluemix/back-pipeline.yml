@@ -25,13 +25,7 @@ stages:
       # To use Node.js 6.7.0, uncomment the following line:
       export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
       #!/bin/bash
-      rm -rf .env
-      file="assistantVersion=${ASSISTANT_VERSION}\nassistantApikey=${ASSISTANT_APIKEY}\nassistantURL=${ASSISTANT_URL}\nassistantID=${ASSISTANT_ID}"
-      echo -e $file >> .env
-      echo "Creating .env file with:"
-      echo -e $file
       npm install
-      npm run build
 - name: Deploy Back end Stage
   inputs:
   - type: job
@@ -40,6 +34,21 @@ stages:
   triggers:
   - type: stage
   properties:
+    - name: CF_APP_NAME
+      value: ${CF_APP_NAME}
+      type: text
+    - name: ASSISTANT_VERSION
+      value: ${ASSISTANT_VERSION}
+      type: text
+    - name: ASSISTANT_APIKEY
+      value: ${ASSISTANT_APIKEY}
+      type: text
+    - name: ASSISTANT_URL
+      value: ${ASSISTANT_URL}
+      type: text
+    - name: ASSISTANT_ID
+      value: ${ASSISTANT_ID}
+      type: text
   jobs:
   - name: Backend Deploy
     type: deployer
@@ -51,9 +60,17 @@ stages:
       api_key: ${API_KEY}
     script: |
       #!/bin/bash
+      #------ Set Env variables
+      rm -rf .env
+      file="assistantVersion=${ASSISTANT_VERSION}\nassistantApikey=${ASSISTANT_APIKEY}\nassistantURL=${ASSISTANT_URL}\nassistantID=${ASSISTANT_ID}"
+      echo -e $file >> .env
+      echo "Creating .env file with:"
+      echo -e $file
       #--blue green
       echo blue green plugin
       cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
       cf install-plugin blue-green-deploy -r CF-Community -f
       #--------------
       cf blue-green-deploy ${CF_APP} --delete-old-apps
+      # View logs
+      cf logs "${CF_APP}" --recent

@@ -24,12 +24,7 @@ stages:
       #export PATH=/opt/IBM/node-v4.4.5/bin:$PATH
       # To use Node.js 6.7.0, uncomment the following line:
       export PATH=/opt/IBM/node-v6.7.0/bin:$PATH
-      file="export default {API:'https://${CF_APP_NAME}-backend.mybluemix.net'}"
-      echo $file > src/config/env/production.js
-      echo "Creating env file with:"
-      echo $file
       npm install
-      npm run build
 - name: Deploy Front end Stage
   inputs:
   - type: job
@@ -38,6 +33,9 @@ stages:
   triggers:
   - type: stage
   properties:
+    - name: CF_APP_NAME
+      value: ${CF_APP_NAME}
+      type: text
   jobs:
   - name: Frontend Deploy
     type: deployer
@@ -49,9 +47,16 @@ stages:
       api_key: ${API_KEY}
     script: |
       #!/bin/bash
+      #---- Set Env
+      file="export default {API:'https://${CF_APP_NAME}-backend.mybluemix.net'}"
+      echo $file > src/config/env/production.js
+      echo "Creating env file with:"
+      echo $file
       #--blue green
       echo blue green plugin
       cf add-plugin-repo CF-Community https://plugins.cloudfoundry.org
       cf install-plugin blue-green-deploy -r CF-Community -f
       #--------------
       cf blue-green-deploy ${CF_APP} --delete-old-apps
+      #---- View Logs
+      cf logs "${CF_APP}" --recent
